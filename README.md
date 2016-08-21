@@ -57,9 +57,9 @@ The following steps outline the entire data acquisition process. Every execution
 9. After the execution of `main.sh`, portion of data will be availabe at `$runDir` where the filename is `plot1`.
 
 ## Data Multiplexing
-The following steps outline the step to combine and multiplex the data from the storage nodes.
+The following steps outline the process to combine and multiplex the data from the storage nodes.
 
-1. Go to `sw/main/post_unify/`, execute `make` to compile the program `8bitLineToBig` and `tsharkTo8bitLine`
+1. Go to `sw/main/post_unify`, execute `make` to compile the program `8bitLineToBig` and `tsharkTo8bitLine`.
 
 2. Open `postDataAnalysis.sh` and change the following lines according to your system settings.
   ```Shell
