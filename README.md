@@ -14,7 +14,7 @@ To perform data acquisition from the ATOM frontend, the following software has t
   2. n2disk10g
 2. Main:
   1. Ubuntu 14.04 LTS 
-2. Tshark
+  2. Tshark
 
 ## Data Acquisition  
 The following steps outline the entire data acquisition process. Every execution is done on Main unless otherwise specified.
