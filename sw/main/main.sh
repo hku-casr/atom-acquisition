@@ -78,7 +78,7 @@ echo "Program BofFiles"
 
 sleep 9  #4 if using test_delays from Jack
 
-ssh $casr2 'cd boffiles &&  python fullethdev.py -r 192.168.100.182 -b adcethvfullv64_2015_Dec_01_0023.bof'
+ssh $casr2 "cd boffiles &&  python fullethdev.py -r $roach -b adcethvfullv64_2015_Dec_01_0023.bof"
 
 echo "Waiting for 1.pcap to finish on each of the systems"
 wait

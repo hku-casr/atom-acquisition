@@ -49,8 +49,33 @@ The following steps outline the entire data acquisition process. Every execution
 ```
 7. Also in the same file, modify the following lines according to the bof file name.
   ```Shell
-  ssh $casr2 'cd boffiles &&  python fullethdev.py -r 192.168.100.182 -b xxx.bof'
+  ssh $casr2 "cd boffiles &&  python fullethdev.py -r $roach -b xxx.bof"
   ```
 
 8. Launch `main.sh` to start the data acquisition process.
 
+9. After the execution of `main.sh`, portion of data will be availabe at `$runDir` where the filename is `plot1`.
+
+## Data Multiplexing
+The following steps outline the step to combine and multiplex the data from the storage nodes.
+
+1. Go to `sw/main/post_unify/`, execute `make` to compile the program `8bitLineToBig` and `tsharkTo8bitLine`
+
+2. Open `postDataAnalysis.sh` and change the following lines according to your system settings.
+  ```Shell
+  DirName="xxx"
+  
+  # This is the remote directory on 4 machines
+  remRunDir="xxx/xxx"
+  # The folder machine, i.e. Main,  from where you run this script  
+  runDir="xxx/xxx" 
+
+  remRunDir=$remRunDir$DirName
+  runDir=$runDir$DirName
+
+  comp1="xxx.xxx.xxx.xxx" 
+  comp2="xxx.xxx.xxx.xxx"
+  comp3="xxx.xxx.xxx.xxx"
+  comp4="xxx.xxx.xxx.xxx"
+   ```
+3. Launch `postDataAnalysis.sh` to obtain the whole timing diagram for the data, note this can take 10-15 mins.
