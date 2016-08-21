@@ -20,9 +20,16 @@ To perform data acquisition from the ATOM frontend, the following software has t
 The following steps outline the entire data acquisition process. Every execution is done on Main unless otherwise specified.
 
 1. Navigate to `fpga`, compile and generate the required bof file with the `adcethvfullv64.mdl` using Matlab, Xilinx Simulink and CASPER library. Or you can use the provided bof file.
+
 2. Then copy the bof file to `../sw/nfs`.
-3. Copy `sw/nfs` to the NFS machine where the target directory is `$HOME\boffiles`.
-3. Navigate to `sw/main`, open `main.sh`and change the following lines according to your own platforms.
+
+3. Copy `sw/nfs` to the NFS machine where the target directory is `$HOME/boffiles`.
+
+4. Copy `sw/node` to each of the storage nodes where the target directory is `$HOME/`.
+
+5. Go to `sw/main/common`, execute `make`.
+
+6. Navigate to `sw/main`, open `main.sh`and change the following lines according to your own platforms.
 ```Shell
 # This is the remote directory on 4 machines that you want to store data
 remRunDir="xxx/xxx" 
@@ -40,7 +47,10 @@ casr2="xxx.xxx.xxx.xxx"
 # Local IP for Roach-2
 roach="192.168.100.xxx"
 ```
+7. Also in the same file, modify the following lines according to the bof file name.
+```Shell
+ssh $casr2 'cd boffiles &&  python fullethdev.py -r 192.168.100.182 -b xxx.bof'
+```
 
-4. Navigate to `sw/main/common`, execute `make`.
-5. 
+8. Launch `main.sh` to start the data acquisition process.
 
